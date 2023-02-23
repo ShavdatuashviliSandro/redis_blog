@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 <style>
@@ -36,24 +36,22 @@
 }
 
 </style>
+  <title></title>
 </head>
 <body>
 
 <ul class="ulist">
   <li class="list"><a href="/">Home</a></li>
-  <li class="list"><a class="active" href="/all">All Posts</a></li>
-  <li class="list"><a href="/latest">Latest Posts</a></li>
+  <li class="list"><a class="active" href="/posts">All Posts</a></li>
+  <li class="list"><a href="/recent_posts">Latest Posts</a></li>
 </ul>
-
   <h1 align="center"> All Awesome Posts</h1>
-
   <h4 style="color:red" align="center">Check the latest post to see recent 3 posts</h4>
   <hr>
   <br>
   <ul>
-
-    {% for k,v in posts.items() %}
-    <li class = "data">{{ k }} posted {{v}}</li>
+    {% for author,post in posts.items() %}
+    <li class = "data">{{ author }} posted {{post}}</li>
     {% endfor %}
   </ul>
 
