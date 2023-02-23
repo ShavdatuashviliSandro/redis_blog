@@ -1,9 +1,13 @@
 import redis
-r = redis.Redis()
-r.set('fname', 'Diwakar')
-name_bytes = r.get('fname')
+from flask import Flask, render_template
 
-name = name_bytes.decode('utf-8')
-msg = f"My name is {name}"
+app = Flask(__name__)
 
-print(msg)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+
+if __name__ == '__main__':
+    app.run()
