@@ -1,61 +1,35 @@
-<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <style>
-    .ulist {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .list {
-      float: left;
-    }
-
-    .list a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    .list a:hover:not(.active) {
-      background-color: #111;
-    }
-
-    .active {
-      background-color: #4CAF50;
-    }
-
-    .data {
-      font-size: x-large;
-    }
-  </style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PostApp - Posts</title>
+    <link rel="stylesheet" href="../static/css/recent_posts.css">
 </head>
-
 <body>
-
-  <ul class="ulist">
+<ul class="ulist">
     <li class="list"><a href="/">Home</a></li>
     <li class="list"><a href="/posts">All Posts</a></li>
     <li class="list"><a class="active" href="/recent_posts">Latest Posts</a></li>
-  </ul>
-
-  <h1 align="center"> Recent Posts</h1>
-
-  <h4 style="color:red" align="center">3 recent posts</h4>
-  <hr>
-  <br>
-  <ul>
-
-    {% for k,v in posts.items() %}
-    <li class = "data">{{ k }} posted {{v}}</li>
-    {% endfor %}
-  </ul>
-
+</ul>
+<br>
+<h1 align="center" style="font-size: 25px"> Recent Posts</h1>
+<h4 style="color:red; font-size: 18px" align="center">Check 3 recent posts</h4>
+<hr>
+<br>
+<div>
+    <ul>
+        {% for author,post in posts.items() %}
+        <li class="data"><strong>{{ author }}</strong> Posted - {{post}}</li>
+        <br>
+        {% endfor %}
+    </ul>
+</div>
+<div class="footer">
+    <br>
+    <small>©Copyright: <a href="https://www.linkedin.com/in/sandro-shavdatuashvili-7b627b198/" class="footer-text"
+                          target="_blank">Sandro Shavdatuashvili</a></small>
+</div>
 </body>
 </html>

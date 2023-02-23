@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, flash
 app = Flask(__name__)
 r = redis.Redis()
 app.secret_key = 'sandro'
+
 last_id = 0
 
 
@@ -45,10 +46,21 @@ def posts():
 
     return render_template('posts.html', posts=posts)
 
+
 @app.route('/recent_posts')
 def recent_posts():
-    posts = {}
-    return render_template('recent_posts.html',posts = posts)
+    post_ids = r.lrange('post_id', 0, 2)
+    recent_posts = dict()
+    for post_id in post_ids:
+        name_byte = r.get(f'news:name:{post_id.decode("utf-8")}')
+        name = name_byte.decode('utf-8')
+
+        post_byte = r.get(f'news:post:{post_id.decode("utf-8")}')
+        post = post_byte.decode('utf-8')
+
+        recent_posts[name] = post
+    return render_template('recent_posts.html', posts=recent_posts)
+
 
 if __name__ == '__main__':
     app.run()

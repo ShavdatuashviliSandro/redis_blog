@@ -1,0 +1,46 @@
+.ulist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.list {
+    float: left;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.footer {
+    width: 100%;
+    height: 60px;
+    background-color: #111;
+    color: white;
+    text-decoration: none;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+
+.footer-text {
+    color: white;
+}
+
+.list a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.data {
+    font-size: x-large;
+}
