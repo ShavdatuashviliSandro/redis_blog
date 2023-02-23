@@ -1,105 +1,61 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    .ulist {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    .list {
+      float: left;
+    }
 
-    <style>
-        .form-details {
-            width: 100%;
-            max-width: 530px;
-            padding: 15px;
-            margin: 0 auto;
-        }
+    .list a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
 
-        body {
-            min-height: 75rem;
-            margin: 0;
-        }
+    .list a:hover:not(.active) {
+      background-color: #111;
+    }
 
-        .ulist {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-        }
+    .active {
+      background-color: #4CAF50;
+    }
 
-        .list {
-            float: left;
-        }
-
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .list a:hover:not(.active) {
-            background-color: #111;
-        }
-
-        .active {
-            background-color: #4CAF50;
-        }
-
-        .data {
-            font-size: x-large;
-        }
-    </style>
-    <title>Post Some Exciting Stuff!</title>
+    .data {
+      font-size: x-large;
+    }
+  </style>
 </head>
 
-<body class="text-center">
-<ul class="ulist">
-    <li class="list"><a class="active" href="/">Home</a></li>
+<body>
+
+  <ul class="ulist">
+    <li class="list"><a href="/">Home</a></li>
     <li class="list"><a href="/all">All Posts</a></li>
-    <li class="list"><a href="/latest">Latest Posts</a></li>
-</ul>
+    <li class="list"><a class="active" href="/latest">Latest Posts</a></li>
+  </ul>
 
-<br> <br>
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-{% for category, message in messages %}
-<div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-    <span>{{ message }}</span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
+  <h1 align="center"> Recent Posts</h1>
 
-<form class="form-details" method="POST">
+  <h4 style="color:red" align="center">3 recent posts</h4>
+  <hr>
+  <br>
+  <ul>
 
-    <h1 class="h3 mb-3 font-weight-normal">Write Something Exciting</h1>
-
-    <input type="text" name="full_name" class="form-control" placeholder="Enter Name" required autofocus>
-
-    <textarea class="form-control" name="data" rows="3" placeholder="Enter a latest news"></textarea>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-
-</form>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    {% for k,v in posts.items() %}
+    <li class = "data">{{ k }} posted {{v}}</li>
+    {% endfor %}
+  </ul>
 
 </body>
-
 </html>
