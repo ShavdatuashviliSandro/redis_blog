@@ -49,7 +49,7 @@ def posts():
 
 @app.route('/recent_posts')
 def recent_posts():
-    post_ids = r.lrange('post_id', 0, 2)
+    post_ids = r.lrange('post_id', 0, 3)
     recent_posts = dict()
     for post_id in post_ids:
         name_byte = r.get(f'news:name:{post_id.decode("utf-8")}')
